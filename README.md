@@ -1,5 +1,12 @@
-![Terraform](https://lgallardo.com/images/terraform.jpg)
+<a href="https://terraform.io">
+    <img src="https://github.com/gitlabhq/terraform-provider-gitlab/blob/main/.github/terraform_logo.svg" alt="Terraform logo" title="Terraform" align="right" height="50" />
+</a>
+
 # Gitlab microservices bumper
+
+[![Tests](https://github.com/terraform-gitlab-modules/terraform-gitlab-microservices-bumper/actions/workflows/default.yml/badge.svg)](https://github.com/terraform-gitlab-modules/terraform-gitlab-microservices-bumper/actions/workflows/default.yml)
+
+
 Terraform module for creating Gitlab [branches](https://docs.gitlab.com/ee/api/branches.html) and [tags](https://docs.gitlab.com/ee/api/tags.html) from tag messages of target Gitlab project. This module allows you to declaratively manage tags and branches of all microservices (repositories) which are in GitLab.
 
 
