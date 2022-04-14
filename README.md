@@ -32,8 +32,8 @@ provider "gitlab" {
 }
 
 module "gitlab_microservices_bumper" {
-  source  = "terraform-gitlab-modules/microservices-bumper/gitlab"
-  version = "1.0.0"
+  source     = "terraform-gitlab-modules/microservices-bumper/gitlab"
+  version    = "1.0.0"
 
   project_id = "999"
 }
