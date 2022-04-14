@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  gitlab-ce:
+    image: gitlab/gitlab-ce
+    restart: on-failure
+    ports:
+      - 8000:80
+    environment:
+      GITLAB_ROOT_PASSWORD: adminadmin
+    labels:
+      gitlab-microservices-bumper/owned: ''
+    volumes:
+      - ./healthcheck-and-setup.sh:/healthcheck-and-setup.sh:Z
+    healthcheck:
+      test: /healthcheck-and-setup.sh
+      interval: 10s
+      timeout: 2m
