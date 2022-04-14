@@ -4,10 +4,10 @@
 
 # Gitlab microservices bumper
 
-[![Tests](https://github.com/terraform-gitlab-modules/terraform-gitlab-microservices-bumper/actions/workflows/default.yml/badge.svg)](https://github.com/terraform-gitlab-modules/terraform-gitlab-microservices-bumper/actions/workflows/default.yml)
+[![Tests](https://github.com/terraform-gitlab-modules/terraform-gitlab-microservices-bumper/actions/workflows/default.yml/badge.svg)](https://github.com/terraform-gitlab-modules/terraform-gitlab-microservices-bumper/actions/workflows/default.yml) [![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/terraform-gitlab-modules/terraform-gitlab-microservices-bumper?label=release)](https://github.com/terraform-gitlab-modules/terraform-gitlab-microservices-bumper/releases) [![license](https://img.shields.io/github/license/terraform-gitlab-modules/terraform-gitlab-microservices-bumper.svg)]()
 
 
-Terraform module for creating Gitlab [branches](https://docs.gitlab.com/ee/api/branches.html) and [tags](https://docs.gitlab.com/ee/api/tags.html) from tag messages of target Gitlab project. This module allows you to declaratively manage tags and branches of all microservices (repositories) which are in GitLab.
+Terraform module for creating Gitlab [branches](https://docs.gitlab.com/ee/api/branches.html) and [tags](https://docs.gitlab.com/ee/api/tags.html) from tag messages of the target Gitlab project. This module allows you to declaratively manage tags and branches of all microservices (repositories) which are in GitLab.
 
 
 ## Usage
