@@ -15,6 +15,26 @@ https://user-images.githubusercontent.com/84093529/163398006-62bc631a-89db-4588-
 
 ## Example
 
+### Tag name
+
+Recommend use [SemVer](https://semver.org/) tags name for future releases (for example `1.0.0`).
+
+### Tag message
+```
+tags:
+  projects: &projects
+    main: [ 2, 3 ]
+    master: [ 4 ]
+branches:
+  prefix: "v"
+  protected:
+    enabled: true
+    create_access_level: "developer"
+  projects: *projects
+```
+
+### Terraform code
+
 ```
 terraform {
   required_providers {
