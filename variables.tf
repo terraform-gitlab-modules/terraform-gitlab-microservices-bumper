@@ -3,12 +3,6 @@ variable "project_id" {
   type        = string
 }
 
-variable "prefix" {
-  description = "Default prefix of tags or branches"
-  type        = string
-  default     = ""
-}
-
 variable "message" {
   description = "Default message of tags or branches"
   type        = string

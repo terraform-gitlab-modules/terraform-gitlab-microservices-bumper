@@ -19,8 +19,8 @@ locals {
   master_projects_str = "[${join(",", gitlab_project.master[*].id)}]"
   tags = {
     "1.0.0" : "",
-    "1.0.1" : "tags: {projects: {main: ${local.main_projects_str}, master: ${local.master_projects_str}}}",
-    "1.0.2" : "{tags: &config {prefix: v, protected: {enabled: true, create_access_level: developer}, projects: {main: ${local.main_projects_str}, master: ${local.master_projects_str}}}, branches: *config}",
+    "1.0.1" : "tags: {name: $TAG_NAME, projects: {main: ${local.main_projects_str}, master: ${local.master_projects_str}}}",
+    "1.0.2" : "{branches: {name: release-$TAG_NAME, protected: &protected {enabled: true, create_access_level: developer}, projects: {main: &main ${local.main_projects_str}, master: &master ${local.master_projects_str}}}, tags: {name: $TAG_NAME, protected: *protected, projects: {release-$TAG_NAME: [*main, *master]}}}",
   }
 }
 
