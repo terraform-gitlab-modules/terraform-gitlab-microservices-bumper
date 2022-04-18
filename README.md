@@ -20,19 +20,19 @@ https://user-images.githubusercontent.com/84093529/163398006-62bc631a-89db-4588-
 Recommend use [SemVer](https://semver.org/) tags name for future releases (for example `1.0.0`).
 
 ### Tag message
-```
-# Now support only `branches` and `tags`. You can use `tags` and `branches` field separately from each other.
+```yaml
+# Now support only branches and tags. You can use tags and branches field separately from each other.
 # Also, in the Yaml config, you can use $TAG_NAME variable. This variable equal tag name.
 branches:
-  # `name` is required field.
+  # name is required field.
   name: release-$TAG_NAME
-  # `protected` is an optional field and may miss.
+  # protected is an optional field and may miss.
   protected: &protected
     enabled: true
     create_access_level: developer
-  # `message` is an optional field and may miss.
+  # message is an optional field and may miss.
   message: Test
-  # `projects` is required field. Format elements in `projects` is <branch name (ref) or commit SHA>: [<list of projects>].
+  # projects is required field. Format elements in `projects` is <branch name (ref) or commit SHA>: [<list of projects>].
   # NOTE: I really recommend you use commit SHA because if you recreate tag with this message all objects will be created from last commit of target branch.
   projects:
     b1c70966181b79a5adb3b593a9455f3c6515eedb: &main [ 2, 3 ]
@@ -47,7 +47,7 @@ tags:
 
 ### Terraform code
 
-```
+```terraform
 terraform {
   required_providers {
     gitlab = {
