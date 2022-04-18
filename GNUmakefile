@@ -3,15 +3,11 @@ default: fmt tests
 infra-up:
 	sudo docker-compose -f infra/docker/docker-compose.yml up -d
 	./infra/docker/await-healthy.sh
-	cd infra/terraform/ && \
-	terraform init && \
-	terraform apply -auto-approve && \
-	cd -
+	terraform -chdir=infra/terraform/ init
+	terraform -chdir=infra/terraform/ apply -auto-approve
 
 infra-down:
-	cd infra/terraform/ && \
-	terraform destroy -auto-approve && \
-	cd -
+	terraform -chdir=infra/terraform/ destroy -auto-approve
 	sudo docker-compose -f infra/docker/docker-compose.yml down -v
 
 integration-tests:
