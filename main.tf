@@ -12,8 +12,8 @@ locals {
   objects = {
     for option in local.options : option => flatten([
       for config_message in local.config_messages[option] : [
-        for branch, projects in flatten(config_message["projects"]) : [
-          for project in projects : [
+        for branch, projects in config_message["projects"] : [
+          for project in flatten(projects) : [
             {
               name      = config_message["name"]
               project   = project
