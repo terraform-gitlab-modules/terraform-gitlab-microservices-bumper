@@ -21,16 +21,18 @@ Recommend use [SemVer](https://semver.org/) tags name for future releases (for e
 
 ### Tag message
 ```
-tags:
-  projects: &projects
-    main: [ 2, 3 ]
-    master: [ 4 ]
 branches:
-  prefix: "v"
+  name: release-$TAG_NAME
   protected:
     enabled: true
-    create_access_level: "developer"
-  projects: *projects
+    create_access_level: developer
+  projects:
+    main: &main [ 2, 3 ]
+    master: &master [ 4 ]
+tags:
+  name: $TAG_NAME
+  projects:
+    release-$TAG_NAME: [*main, *master]
 ```
 
 ### Terraform code
