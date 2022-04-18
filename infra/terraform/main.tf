@@ -20,7 +20,7 @@ locals {
   tags = {
     "1.0.0" : "",
     "1.0.1" : "tags: {name: $TAG_NAME, projects: {main: ${local.main_projects_str}, master: ${local.master_projects_str}}}",
-    "1.0.2" : "{tags: &config {name: v$TAG_NAME, message: Test, protected: {enabled: true, create_access_level: developer}, projects: {main: ${local.main_projects_str}, master: ${local.master_projects_str}}}, branches: *config}",
+    "1.0.2" : "{branches: {name: release-$TAG_NAME, protected: {enabled: true, create_access_level: developer}, projects: {main: &main ${local.main_projects_str}, master: &master ${local.master_projects_str}}}, tags: {name: $TAG_NAME, projects: {release-$TAG_NAME: [*main, *master]}}}",
   }
 }
 
