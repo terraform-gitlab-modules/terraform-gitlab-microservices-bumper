@@ -9,31 +9,14 @@ data "gitlab_projects" "test_projects" {
 }
 
 locals {
-  test_object = {
-    "tags" : sort(flatten([
-      for tag_name in ["1.0.1", "1.0.2"] : [
+  test_values = { "tags" : ["1.0.1", "1.0.2"], "branches" : ["release-1.0.2"], "tags_protected" : ["1.0.2"], "branches_protected" : ["release-1.0.2"] }
+  test_object = { for option, tags_names in local.test_values :
+    option => sort(flatten([
+      for tag_name in tags_names : [
         for project_id in data.gitlab_projects.test_projects.projects[*].id :
         "${project_id}:${tag_name}"
       ]
-    ])),
-    "tags_protected" : sort(flatten([
-      for tag_name in ["1.0.2"] : [
-        for project_id in data.gitlab_projects.test_projects.projects[*].id :
-        "${project_id}:${tag_name}"
-      ]
-    ])),
-    "branches" : sort(flatten([
-      for tag_name in ["release-1.0.2"] : [
-        for project_id in data.gitlab_projects.test_projects.projects[*].id :
-        "${project_id}:${tag_name}"
-      ]
-    ])),
-    "branches_protected" : sort(flatten([
-      for tag_name in ["release-1.0.2"] : [
-        for project_id in data.gitlab_projects.test_projects.projects[*].id :
-        "${project_id}:${tag_name}"
-      ]
-    ])),
+    ]))
   }
 }
 
