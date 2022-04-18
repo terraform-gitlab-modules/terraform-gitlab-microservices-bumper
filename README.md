@@ -23,7 +23,7 @@ Recommend use [SemVer](https://semver.org/) tags name for future releases (for e
 ```
 branches:
   name: release-$TAG_NAME
-  protected:
+  protected: &protected
     enabled: true
     create_access_level: developer
   projects:
@@ -31,6 +31,7 @@ branches:
     master: &master [ 4 ]
 tags:
   name: $TAG_NAME
+  protected: *protected
   projects:
     release-$TAG_NAME: [*main, *master]
 ```
