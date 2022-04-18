@@ -35,8 +35,8 @@ branches:
   # projects is required field. Format elements in projects is <branch name (ref) or commit SHA>: [<list of projects>].
   # NOTE: I really recommend you use commit SHA because if you recreate tag with this message all objects will be created from last commit of target branch.
   projects:
-    b1c70966181b79a5adb3b593a9455f3c6515eedb: &main [ 2, 3 ]
-    master: &master [ 4 ]
+    main: &main [ 2, 3 ]
+    b1c70966181b79a5adb3b593a9455f3c6515eedb: &master [ 4 ]
 tags:
   name: $TAG_NAME
   protected: *protected
