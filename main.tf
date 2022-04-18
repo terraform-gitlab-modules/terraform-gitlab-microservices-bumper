@@ -1,15 +1,25 @@
 locals {
-  objects = {
-    for option in ["tags", "branches"] : option => flatten([
+  options = ["tags", "branches"]
+
+  config_messages = {
+    for option in local.options : option => flatten([
       for tag in data.gitlab_project_tags.this.tags : [
-        for branch, projects in lookup(yamldecode(tag.message != "" ? tag.message : "${option}: {projects: []}"), option, { projects = [] })["projects"] : [
+        lookup(yamldecode(tag.message != "" ? replace(tag.message, "$TAG_NAME", tag.name) : "${option}: {name: '', projects: []}"), option, { name = "", projects = [] })
+      ]
+    ])
+  }
+
+  objects = {
+    for option in local.options : option => flatten([
+      for config_message in local.config_messages[option] : [
+        for branch, projects in config_message["projects"] : [
           for project in projects : [
             {
-              name      = "${lookup(lookup(yamldecode(tag.message), option, { prefix = var.prefix }), "prefix", var.prefix)}${tag.name}"
+              name      = config_message["name"]
               project   = project
               ref       = branch
-              message   = var.message
-              protected = lookup(lookup(yamldecode(tag.message), option, { prefix = var.protected }), "protected", var.protected)
+              message   = lookup(config_message, "message", var.message)
+              protected = lookup(config_message, "protected", var.protected)
             }
           ]
         ]
